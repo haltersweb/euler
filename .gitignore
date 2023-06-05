@@ -1,0 +1,9 @@
+lib/
+share/
+bin/
+etc/
+.DS_Store
+.ipynb_checkpoints/
+pyvenv.cfg
+__pycache__
+*.zip
