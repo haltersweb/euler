@@ -23,7 +23,7 @@ def is_prime(n: int) -> bool:
         print(f"{n} is_prime: False because n {n} is <= 1")
         return False
     if n == 2: # only even prime
-        print(f"{n} is_prime: True because n {n} == 2")
+        print(f"{n} is_prime: True because n == 2 (first even)")
         return True
     if n % 2 == 0: # no even numbers are prime
         print(f"{n} is_prime: False because n {n} is even")
@@ -58,6 +58,7 @@ def is_prime(n: int) -> bool:
 
 # TODO: need to do this as a factor tree
 def largest_prime_brute2(n: int) -> int:
+    print("\n")
     # edge cases: 
     if n <= 1: # edge 1: n is too small to be a prime
         print(f"n = {n} is too small to find a largest prime")
@@ -97,9 +98,13 @@ def largest_prime_brute2(n: int) -> int:
     print(f"something went wrong and no largest prime factors found")
     return -1
 
-
-# print(is_prime(9))
-# print(largest_prime_brute2(8))
-# print(largest_prime_brute2(9))
-# print(largest_prime_brute2(27))
-print(largest_prime_brute2(600851475143)) #6857
+print(largest_prime_brute2(0)) #n too small
+print(largest_prime_brute2(1)) #n too small
+print(largest_prime_brute2(2)) #2
+print(largest_prime_brute2(3)) #3
+print(largest_prime_brute2(7)) #7
+print(largest_prime_brute2(8)) #2
+print(largest_prime_brute2(9)) #3
+print(largest_prime_brute2(390)) #13
+print(largest_prime_brute2(13195)) #29
+# print(largest_prime_brute2(600851475143)) #6857
