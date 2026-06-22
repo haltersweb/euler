@@ -7,3 +7,5 @@ etc/
 pyvenv.cfg
 __pycache__
 *.zip
+*.code-workspace
+
