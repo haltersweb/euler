@@ -17,12 +17,12 @@
 
 
 
-def is_prime(n: int) -> bool:
+def is_prime(n: int) -> bool: # test if number is prime or composite
     if n <= 1: # 0, 1 are not primes
         return False
-    if n == 2: # only even prime
+    if n == 2: # the only even prime
         return True
-    if n % 2 == 0: # no even numbers are prime
+    if n % 2 == 0: # no other even numbers are prime
         return False
     for i in range(3, int(n**0.5) + 1, 2): # check only odds up to sqrt of n
         if n % i == 0:
@@ -49,21 +49,19 @@ def largest_prime_brute(n: int) -> int:
                 return i
         if is_prime(quotient):
             return quotient
-        if i > 2:
-            i += 2 # next odd number
-        else: #  single instance of when i == 2
-            i = 3
+        i += (2 if i > 2 else 1)
 
-# print(f"for n = 0 largest prime is:", largest_prime_brute(0)) #n too small
-# print(f"for n = 1 largest prime is:", largest_prime_brute(1)) #n too small
-# print(f"for n = 2 largest prime is:", largest_prime_brute(2)) #2
-# print(f"for n = 3 largest prime is:", largest_prime_brute(3)) #3
-# print(f"for n = 7 largest prime is:", largest_prime_brute(7)) #7
-# print(f"for n = 8 largest prime is:", largest_prime_brute(8)) #2
-# print(f"for n = 9 largest prime is:", largest_prime_brute(9)) #3
-# print(f"for n = 390 largest prime is:", largest_prime_brute(390)) #13
-# print(f"for n = 13195 largest prime is:", largest_prime_brute(13195)) #29
-# print(f"for n = 600851475143 largest prime is:", largest_prime_brute(600851475143)) #6857
+
+print(f"for n = 0 largest prime is:", largest_prime_brute(0)) #n too small
+print(f"for n = 1 largest prime is:", largest_prime_brute(1)) #n too small
+print(f"for n = 2 largest prime is:", largest_prime_brute(2)) #2
+print(f"for n = 3 largest prime is:", largest_prime_brute(3)) #3
+print(f"for n = 7 largest prime is:", largest_prime_brute(7)) #7
+print(f"for n = 8 largest prime is:", largest_prime_brute(8)) #2
+print(f"for n = 9 largest prime is:", largest_prime_brute(9)) #3
+print(f"for n = 390 largest prime is:", largest_prime_brute(390)) #13
+print(f"for n = 13195 largest prime is:", largest_prime_brute(13195)) #29
+print(f"for n = 600851475143 largest prime is:", largest_prime_brute(600851475143)) #6857
 
 ### ----------------- TIME THE EXECUTION ----------------- ###
 import time
