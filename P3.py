@@ -29,6 +29,7 @@ def is_prime(n: int) -> bool:
             return False
     return True
 
+
 # Solve brute force as a factor tree
 def largest_prime_brute(n: int) -> int:
     if n <= 1: # edge 1: n is too small to be a prime
@@ -37,17 +38,10 @@ def largest_prime_brute(n: int) -> int:
     if is_prime(n): # edge 2: n already is prime
         return n
     quotient = n # start with n
-    i = 2 # only even number to test
-    while quotient % i == 0: # factor out all evens
-        quotient = int(quotient / i)
-        if quotient == 1:
-            return i
-        if is_prime(quotient): # after i factored out is result prime?
-            return quotient
-    i = 3 # first odd number to test
+    i = 2 # start at the only even prime
     while True:
-        if not is_prime(i): # i isn't prime so:
-                i += 2 # next odd number
+        if not is_prime(i):
+                i += 2 # i isn't prime so next odd number
                 continue
         while quotient % i == 0:
             quotient = int(quotient / i)
@@ -55,7 +49,10 @@ def largest_prime_brute(n: int) -> int:
                 return i
         if is_prime(quotient):
             return quotient
-        i += 2 # next odd number
+        if i > 2:
+            i += 2 # next odd number
+        else: #  single instance of when i == 2
+            i = 3
 
 # print(f"for n = 0 largest prime is:", largest_prime_brute(0)) #n too small
 # print(f"for n = 1 largest prime is:", largest_prime_brute(1)) #n too small
@@ -75,7 +72,7 @@ import time
 start_time = time.perf_counter_ns()
 
 # run the function
-print(f"for n = 600851475143 largest prime is:", largest_prime_brute(600851475143)) #6857
+print(f"for n = 600851475143 largest prime is:", largest_prime_brute(600851475143)) #6857 elapsed time: 5.51850 ms
 
 # print time elapsed
 elapsed_ms = (time.perf_counter_ns() - start_time) / 1e6
