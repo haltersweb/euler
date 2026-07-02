@@ -1,30 +1,41 @@
 from is_prime import is_prime
 
 def find_prime_factors(num: int) -> list:
+    if num < 2: # edge 1: num is too small
+        return []
+    if is_prime(num): # edge 2: num is prime
+        return [num]
     prime_factors = set()
-    if num <= 1: # edge 1: n is too small to be a prime
-        print(f"num of {num} too small to be a prime")
-        return prime_factors
-    if is_prime(num): # edge 2: n already is prime
-        prime_factors.add(num)
-        return prime_factors
-    quotient = num # start value at num
-    i = 2
+    quotient = num
+    n = 2 # first prime to test
     while True:
-        if not quotient % i == 0: # i is not a prime factor
-            i += (2 if i > 2 else 1) # iterates through odds starting at i == 3
+        if not quotient % n == 0: # not prime
+            n += (2 if n != 2 else 1) # ensures n is always odd after 2
             continue
-        while quotient % i == 0: # keep filtering out prime factor i
-            prime_factors.add(i)
-            quotient = int(quotient / i)
-            if quotient == 1:
-                return sorted(prime_factors)
-        if is_prime(quotient): # factored out quotient result is prime
+        while quotient % n == 0: # keep filtering out prime factor i
+            prime_factors.add(n) # add first checks dups via hash
+            quotient = int(quotient / n)
+        if quotient == 1:
+            break
+        if is_prime(quotient):
             prime_factors.add(quotient)
-            return sorted(prime_factors)
-        i += (2 if i > 2 else 1) # iterates through odds starting at i == 3
-
+            break
+        n += (2 if n != 2 else 1) # ensures n is always odd after 2
+    prime_factors = sorted(prime_factors)
+    return prime_factors
+            
 import sys
 if __name__ == "__main__":
-    num = int(sys.argv[1])
-    print(f"for num = {num} the prime factors are:", find_prime_factors(num))
+    if len(sys.argv) > 1:
+        argument = int(sys.argv[1])
+        print(f"the prime factors for {argument} are:", find_prime_factors(argument))
+    else:
+        print("No argument was provided at the end of the python CMD after filename")
+
+### TIME THE EXECUTION ###
+# import time
+# start_time = time.perf_counter_ns()
+# print(find_prime_factors(27148824)) # [2, 3, 37, 43, 79] # 228.04621 ms
+# # print time elapsed
+# elapsed_ms = (time.perf_counter_ns() - start_time) / 1e6
+# print(f"Execution time: {elapsed_ms:.5f} ms")

@@ -22,5 +22,11 @@ def brute_spiral_diagonal_sums(side_length: int) -> int:
         sum += (n**2 * 4) - ((n - 1) * 6)
     return sum
 
-print(brute_spiral_diagonal_sums(5))
-print(brute_spiral_diagonal_sums(1001))
+# print("0 x 0 diagonal sum =", brute_spiral_diagonal_sums(0)) # -1
+# print("1 x 1 diagonal sum =", brute_spiral_diagonal_sums(1)) # 1
+# print("3 x 3 diagonal sum =", brute_spiral_diagonal_sums(3)) # 25
+# print("5 x 5 diagonal sum =", brute_spiral_diagonal_sums(5)) # 101
+# print("7 x 7 diagonal sum =", brute_spiral_diagonal_sums(7)) # 261
+# print("9 x 9 diagonal sum =", brute_spiral_diagonal_sums(9)) # 537
+# print("11 x 11 diagonal sum =", brute_spiral_diagonal_sums(11)) # 961
+# print("1001 x 1001 diagonal sum =", brute_spiral_diagonal_sums(1001)) # 669171001
